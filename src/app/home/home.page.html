@@ -1,0 +1,60 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Mixer</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="showAdd=!showAdd">
+      <ion-icon slot="icon-only" [name]="showAdd?'close':'add'"></ion-icon>
+    </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="showAdd">
+    <ion-item>
+      <ion-label>Nombre del mix</ion-label>
+      <ion-input [(ngModel)]="name"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Mix MP3</ion-label>
+      <div class="form-group">
+        <label for="file">Choose File</label>
+        <input
+          type="file"
+          id="file"
+          [(ngModel)]="file"
+          (change)="handleFileInput($event.target)"
+        />
+      </div>
+    </ion-item>
+    <ion-button expand="full" (click)="addMix()">
+      Add
+      <ion-icon slot="start" name="add"> </ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  <div class="flex w100">
+    <div
+      class="w100 mix"
+      [ngClass]="{'mix-click': i === indexClick}"
+      *ngFor="let mix of mixes; let i = index"
+    >
+      <div class="w100">
+        <div class="w100 mix-information">
+          <span class="w100">{{mix.name}}</span>
+          <span class="play" (click)="playMix(i)">
+            <ion-icon name="musical-notes-outline"></ion-icon>
+          </span>
+        </div>
+        <ion-button expand="full" (click)="removeMix(i)">
+          Delete
+          <ion-icon slot="start" name="trash"></ion-icon>
+        </ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-button expand="full" (click)="stopMix()" *ngIf="indexClick !== -1">
+    Stop
+    <ion-icon slot="start" name="stop"></ion-icon>
+  </ion-button>
+</ion-footer>
