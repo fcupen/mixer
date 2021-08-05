@@ -32,7 +32,8 @@
   flex-wrap: wrap;
 }
 .mix {
-  flex: 1 1 30%;
+  flex-grow: 1;
+  width: 20%;
   margin: 0.5rem;
   border: 1px solid rgb(211, 211, 211);
   padding: 0.5rem;

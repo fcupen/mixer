@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1628113569469,
+  "timestamp": 1628118895913,
   "index": "https://fcupen.github.io/mixer/www/index.html",
   "assetGroups": [
     {
@@ -163,7 +163,7 @@
     "https://fcupen.github.io/mixer/www/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://fcupen.github.io/mixer/www/assets/shapes.svg": "638f87e27e6fc7ddfd6e6b262ea70d690f6c7011",
     "https://fcupen.github.io/mixer/www/common.09d4a31b38f55bfb676e.js": "12aecdde93a04e48ecf3c609ee142e6707b418b7",
-    "https://fcupen.github.io/mixer/www/index.html": "79fa988e5d4ddfd20664636ccf7f2a377f1ed7db",
+    "https://fcupen.github.io/mixer/www/index.html": "d3fa6b03c48436b37c74eb83a1a1ef0c58245ece",
     "https://fcupen.github.io/mixer/www/main.4e6901710ab67b198893.js": "705e2dcce29e3d2851cda83b2dc7b8d19294c04c",
     "https://fcupen.github.io/mixer/www/manifest.webmanifest": "da2061dba175bf2d881980e8596ff5343e2dd7b6",
     "https://fcupen.github.io/mixer/www/polyfills-core-js.ae4a399ca89f834f51b3.js": "16d81a0f0dff2b9454d02d2a49479370771ce2e2",

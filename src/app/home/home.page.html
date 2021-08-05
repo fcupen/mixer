@@ -33,14 +33,14 @@
 <ion-content fullscreen="true">
   <div class="flex w100">
     <div
-      class="w100 mix"
+      class="mix" (click)="playMix(i)"
       [ngClass]="{'mix-click': i === indexClick}"
       *ngFor="let mix of mixes; let i = index"
     >
       <div class="w100">
         <div class="w100 mix-information">
           <span class="w100">{{mix.name}}</span>
-          <span class="play" (click)="playMix(i)">
+          <span class="play">
             <ion-icon name="musical-notes-outline"></ion-icon>
           </span>
         </div>

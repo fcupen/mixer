@@ -58,12 +58,8 @@ export class HomePage implements OnInit {
   }
 
   removeMix(index) {
-    this.mixerProvider.removeMix(index).then((mixes) => {
-      this.mixes = mixes;
-    }).catch((error) => {
-      this.presentToast(error).then(() => {
-
-      });
+    this.presentAlert(index).then((a) => {
+      console.log(a);
     });
   }
   addMix() {
@@ -83,13 +79,17 @@ export class HomePage implements OnInit {
     });
   }
   playMix(index) {
-    this.stopMix();
-    this.indexClick = index;
-    this.currentMix = new Audio(this.mixes[index].data);
-    this.currentMix.play();
-    this.currentMix.addEventListener('ended', () => {
-      this.indexClick = -1;
-    });
+    if (index !== this.indexClick) {
+      this.stopMix();
+      this.indexClick = index;
+      this.currentMix = new Audio(this.mixes[index].data);
+      this.currentMix.play();
+      this.currentMix.addEventListener('ended', () => {
+        this.indexClick = -1;
+      });
+    } else {
+      this.stopMix();
+    }
   }
 
   stopMix() {
@@ -103,5 +103,38 @@ export class HomePage implements OnInit {
       duration: 2000
     });
     toast.present();
+  }
+
+  async presentAlert(index) {
+    const alert = await this.alertCtrl.create({
+      header: 'Delete',
+      subHeader: '',
+      message: 'Delete this mix.',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('Confirm Cancel: blah');
+          }
+        }, {
+          text: 'Okay',
+          handler: () => {
+            this.mixerProvider.removeMix(index).then((mixes) => {
+              this.mixes = mixes;
+            }).catch((error) => {
+              this.presentToast(error).then(() => {
+              });
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+
+    const { role } = await alert.onDidDismiss();
+    console.log('onDidDismiss resolved with role', role);
   }
 }
