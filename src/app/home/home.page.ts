@@ -14,6 +14,7 @@ import { MixerProvider } from '../providers/mixer.provider';
 export class HomePage implements OnInit {
 
   mixes: MixInterface[] = [];
+  prevIndex = -1;
   indexClick = -1;
   name = '';
   file;
@@ -108,9 +109,11 @@ export class HomePage implements OnInit {
     this.stopMix();
     if (index !== this.indexClick) {
       this.stopMix();
+      this.prevIndex = index;
       this.indexClick = index;
       this.currentMix = new Audio(this.mixes[index].data);
       this.currentMix.volume = 0.2;
+      this.currentMix.currentTime = this.currentTime;
 
       this.currentMix.play();
       this.currentMix.onplaying = () => {
@@ -121,12 +124,14 @@ export class HomePage implements OnInit {
 
       this.currentMix.addEventListener('ended', () => {
         this.resetAllControls();
-        this.resetSelection();
       });
     } else {
       this.resetAllControls();
-      this.resetSelection();
     }
+  }
+  replayMix() {
+    this.indexClick = -1;
+    this.playMix(this.prevIndex);
   }
 
   stopMix() {
@@ -141,18 +146,18 @@ export class HomePage implements OnInit {
 
   resetAllControls() {
     this.resetSelection();
-    this.resetDuration();
     this.resetCurrentTime();
     this.hideControls();
+
+    this.currentMix.currentTime = 0;
+    this.currentTime$.next(0);
+    this.currentTime = 0;
   }
 
   hideControls() {
     this.showControls = false;
   }
 
-  resetDuration() {
-    this.setDuration(0);
-  }
   resetCurrentTime() {
     this.currentTime$.next(0);
   }

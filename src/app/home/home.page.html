@@ -31,23 +31,6 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen="true">
-  <ion-header *ngIf="showControls">
-    <ion-toolbar>
-      <ion-item>
-        <ion-label>Time {{currentTime | time | date : 'HH:mm:ss.SS'}}</ion-label>
-        <ion-range
-          (click)="blurTime(0)"
-          min="0"
-          step="0.01"
-          [max]="duration"
-          color="secondary"
-          (ionChange)="changeTime($event)"
-          (mousedown)="focusTime($event)"
-          [value]="currentTime"
-        ></ion-range>
-      </ion-item>
-    </ion-toolbar>
-  </ion-header>
   <div class="flex w100">
     <div
       class="mix"
@@ -70,9 +53,26 @@
     </div>
   </div>
 </ion-content>
-<ion-footer>
-  <ion-button expand="full" (click)="stopAllMix()" *ngIf="indexClick !== -1">
-    Stop
-    <ion-icon slot="start" name="stop"></ion-icon>
-  </ion-button>
+<ion-footer *ngIf="prevIndex!==-1">
+  <ion-item class="flex">
+    <ion-label class="time">
+      {{currentTime | time | date : 'HH:mm:ss.SS'}}
+    </ion-label>
+    <ion-range
+      class="w100"
+      (click)="blurTime(0)"
+      min="0"
+      step="0.01"
+      [max]="duration"
+      (ionChange)="changeTime($event)"
+      (mousedown)="focusTime($event)"
+      [value]="currentTime"
+    ></ion-range>
+    <ion-button (click)="stopAllMix()" *ngIf="indexClick !== -1">
+      <ion-icon name="stop"></ion-icon>
+    </ion-button>
+    <ion-button (click)="replayMix()" *ngIf="indexClick === -1">
+      <ion-icon name="refresh-circle"></ion-icon>
+    </ion-button>
+  </ion-item>
 </ion-footer>

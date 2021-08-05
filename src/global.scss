@@ -16,7 +16,7 @@
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
 @import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
+@import "~@ionic/angular/css/display.css";
 
 /* Optional CSS utils that can be commented out */
 @import "~@ionic/angular/css/padding.css";
@@ -25,15 +25,12 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-
-
 .flex {
   display: flex;
   flex-wrap: wrap;
 }
 .mix {
   flex-grow: 1;
-  width: 20%;
   margin: 0.5rem;
   border: 1px solid rgb(211, 211, 211);
   padding: 0.5rem;
@@ -61,4 +58,8 @@
   align-items: center;
   justify-content: center;
   font-size: 50px;
+}
+.time {
+  font-size: 11px !important;
+  max-width: 60px;
 }
