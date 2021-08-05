@@ -1,6 +1,8 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, LoadingController, ModalController, ToastController } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 import { MixInterface } from '../interfaces/mix';
 import { MixerProvider } from '../providers/mixer.provider';
 
@@ -16,6 +18,13 @@ export class HomePage implements OnInit {
   name = '';
   file;
   fileBase64;
+
+  currentTime$ = new BehaviorSubject(0);
+  currentTime = 0;
+  updateTime = true;
+
+  showControls = false;
+  duration = -1;
 
   showAdd = false;
 
@@ -45,6 +54,11 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.updateMixer();
 
+    this.currentTime$.subscribe((currentTime) => {
+      if (this.updateTime) {
+        this.currentTime = currentTime;
+      }
+    });
   }
 
   updateMixer() {
@@ -78,23 +92,84 @@ export class HomePage implements OnInit {
       });
     });
   }
+
+  setCurrentTime() {
+    this.currentTime$.next(this.currentMix.currentTime);
+    if (this.indexClick !== -1) {
+      setTimeout(() => {
+        this.setCurrentTime();
+      }, 10);
+    }
+  }
+  setDuration(duration) {
+    this.duration = duration;
+  }
   playMix(index) {
+    this.stopMix();
     if (index !== this.indexClick) {
       this.stopMix();
       this.indexClick = index;
       this.currentMix = new Audio(this.mixes[index].data);
+      this.currentMix.volume = 0.2;
+
       this.currentMix.play();
+      this.currentMix.onplaying = () => {
+        this.setDuration(this.currentMix.duration);
+        this.setCurrentTime();
+        this.showControls = true;
+      };
+
       this.currentMix.addEventListener('ended', () => {
-        this.indexClick = -1;
+        this.resetAllControls();
+        this.resetSelection();
       });
     } else {
-      this.stopMix();
+      this.resetAllControls();
+      this.resetSelection();
     }
   }
 
   stopMix() {
     this.currentMix.pause();
+    this.showControls = false;
+    this.hideControls();
+  }
+  stopAllMix() {
+    this.resetAllControls();
+    this.stopMix();
+  }
+
+  resetAllControls() {
+    this.resetSelection();
+    this.resetDuration();
+    this.resetCurrentTime();
+    this.hideControls();
+  }
+
+  hideControls() {
+    this.showControls = false;
+  }
+
+  resetDuration() {
+    this.setDuration(0);
+  }
+  resetCurrentTime() {
+    this.currentTime$.next(0);
+  }
+  resetSelection() {
     this.indexClick = -1;
+  }
+
+  changeTime(e) {
+    this.currentTime = e.detail.value;
+  }
+  focusTime(e) {
+    this.updateTime = false;
+  }
+  blurTime(e) {
+    this.currentMix.currentTime = this.currentTime;
+    this.currentTime$.next(this.currentMix.currentTime);
+    this.updateTime = true;
   }
 
   async presentToast(message) {
