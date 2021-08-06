@@ -34,7 +34,7 @@
   <div class="flex w100">
     <div
       class="mix"
-      (click)="playMix(i)"
+      (click)="playMix(i, 0)"
       [ngClass]="{'mix-click': i === indexClick}"
       *ngFor="let mix of mixes; let i = index"
     >
@@ -54,6 +54,15 @@
   </div>
 </ion-content>
 <ion-footer *ngIf="prevIndex!==-1">
+  <div class="holder">
+    <div class="news">
+      {{(mixes[prevIndex].name | titlecase)}}
+      <span class="time">
+        {{ ' ('+ (duration | time | date : 'HH:mm:ss.SS')+')'}}
+      </span>
+    </div>
+  </div>
+
   <ion-item class="flex">
     <ion-label class="time">
       {{currentTime | time | date : 'HH:mm:ss.SS'}}

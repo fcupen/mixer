@@ -105,7 +105,7 @@ export class HomePage implements OnInit {
   setDuration(duration) {
     this.duration = duration;
   }
-  playMix(index) {
+  playMix(index, currentTime = this.currentTime) {
     this.stopMix();
     if (index !== this.indexClick) {
       this.stopMix();
@@ -113,7 +113,7 @@ export class HomePage implements OnInit {
       this.indexClick = index;
       this.currentMix = new Audio(this.mixes[index].data);
       this.currentMix.volume = 0.2;
-      this.currentMix.currentTime = this.currentTime;
+      this.currentMix.currentTime = currentTime;
 
       this.currentMix.play();
       this.currentMix.onplaying = () => {

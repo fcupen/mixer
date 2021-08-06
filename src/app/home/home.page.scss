@@ -25,3 +25,23 @@
 #container a {
   text-decoration: none;
 }
+
+.holder {
+  // background:#ccc;
+  // padding:0.5rem;
+  overflow: hidden;
+}
+.news {
+  animation : slide 7s linear infinite;
+
+}
+
+@keyframes slide {
+  0% {
+    transform: translatex(100%)
+  }
+
+  100% {
+    transform: translatex(0%)
+  }
+}
