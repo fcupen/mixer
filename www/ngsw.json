@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1628240103705,
+  "timestamp": 1628443234670,
   "index": "https://fcupen.github.io/mixer/www/index.html",
   "assetGroups": [
     {
@@ -19,7 +19,6 @@
         "https://fcupen.github.io/mixer/www/1855.77b8754425e26d3f85b7.js",
         "https://fcupen.github.io/mixer/www/2191.fb5f0140b80b92852280.js",
         "https://fcupen.github.io/mixer/www/305.1e6f9bf485dbc4f56fba.js",
-        "https://fcupen.github.io/mixer/www/3063.eb69b9cacd9c47f7e209.js",
         "https://fcupen.github.io/mixer/www/3087.4c6f376af990d6bdb6cf.js",
         "https://fcupen.github.io/mixer/www/3122.05823a2f830646b6d5e0.js",
         "https://fcupen.github.io/mixer/www/3527.1015ee38b7788a498ff2.js",
@@ -38,6 +37,7 @@
         "https://fcupen.github.io/mixer/www/6108.8edcd343278db4f56a90.js",
         "https://fcupen.github.io/mixer/www/6164.ff34c01320b26d86dbce.js",
         "https://fcupen.github.io/mixer/www/6272.913f1be801a2cb48aeba.js",
+        "https://fcupen.github.io/mixer/www/6868.9e8b8a1bee5ccf98d7d8.js",
         "https://fcupen.github.io/mixer/www/6911.6c5011891743c3c1aef5.js",
         "https://fcupen.github.io/mixer/www/7089.c1c11c9f7bd0a2851adc.js",
         "https://fcupen.github.io/mixer/www/7110.b904c3d4e1642eae0a39.js",
@@ -65,14 +65,14 @@
         "https://fcupen.github.io/mixer/www/9921.0131bb90570f662895e3.js",
         "https://fcupen.github.io/mixer/www/common.09d4a31b38f55bfb676e.js",
         "https://fcupen.github.io/mixer/www/index.html",
-        "https://fcupen.github.io/mixer/www/main.9984035658b136af20ec.js",
+        "https://fcupen.github.io/mixer/www/main.bf4ea29e4a591f91a6f7.js",
         "https://fcupen.github.io/mixer/www/manifest.webmanifest",
         "https://fcupen.github.io/mixer/www/polyfills-core-js.ae4a399ca89f834f51b3.js",
         "https://fcupen.github.io/mixer/www/polyfills-css-shim.f5c998e95d55e843af19.js",
         "https://fcupen.github.io/mixer/www/polyfills-dom.d99140c3a0d698a7012e.js",
         "https://fcupen.github.io/mixer/www/polyfills.9e2072dc8497ffcd0a7b.js",
-        "https://fcupen.github.io/mixer/www/runtime.7812dc0c640538c4dc6e.js",
-        "https://fcupen.github.io/mixer/www/styles.75141e607c2e7f377052.css"
+        "https://fcupen.github.io/mixer/www/runtime.f8855fbb32179fe5fd1d.js",
+        "https://fcupen.github.io/mixer/www/styles.39920b060bc0f5634aa0.css"
       ],
       "patterns": []
     },
@@ -108,7 +108,6 @@
     "https://fcupen.github.io/mixer/www/1855.77b8754425e26d3f85b7.js": "f74364832d1c1bdff17031c29a4dab53b458a47b",
     "https://fcupen.github.io/mixer/www/2191.fb5f0140b80b92852280.js": "3aa9bf168480f3466472356da49fd8ad02835b76",
     "https://fcupen.github.io/mixer/www/305.1e6f9bf485dbc4f56fba.js": "3380dcf5290dcdf9e08ecadb67c246c3bdd21e64",
-    "https://fcupen.github.io/mixer/www/3063.eb69b9cacd9c47f7e209.js": "7ad4fe9b8c7b808cbcac9f81e9677e926faca6b4",
     "https://fcupen.github.io/mixer/www/3087.4c6f376af990d6bdb6cf.js": "3c84f88cbcbd89fb4b17c10ebd1c9930fac878ff",
     "https://fcupen.github.io/mixer/www/3122.05823a2f830646b6d5e0.js": "fd1531344384607c022d907793397c80cddab9a5",
     "https://fcupen.github.io/mixer/www/3527.1015ee38b7788a498ff2.js": "9e8192521741aacca772ce04f62d0015dbd86629",
@@ -127,6 +126,7 @@
     "https://fcupen.github.io/mixer/www/6108.8edcd343278db4f56a90.js": "4f8c1836dc2afbe3d6d82408b5b226c03868c227",
     "https://fcupen.github.io/mixer/www/6164.ff34c01320b26d86dbce.js": "f60ecce3c93dfe7f93efc6c917116a10a3847715",
     "https://fcupen.github.io/mixer/www/6272.913f1be801a2cb48aeba.js": "7a54cd28c981c76e91289669e54db02df1112d07",
+    "https://fcupen.github.io/mixer/www/6868.9e8b8a1bee5ccf98d7d8.js": "0f76f34630bdcc844895beff43afe74aff542791",
     "https://fcupen.github.io/mixer/www/6911.6c5011891743c3c1aef5.js": "545d139c8f8ab0bab9703b95b042960540a0c1a9",
     "https://fcupen.github.io/mixer/www/7089.c1c11c9f7bd0a2851adc.js": "b16b76243220ec015795cec18c0931f8c0ec3033",
     "https://fcupen.github.io/mixer/www/7110.b904c3d4e1642eae0a39.js": "9340ba7871c15f3f9e858e5be66d8a75814f0e3d",
@@ -163,15 +163,15 @@
     "https://fcupen.github.io/mixer/www/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "https://fcupen.github.io/mixer/www/assets/shapes.svg": "638f87e27e6fc7ddfd6e6b262ea70d690f6c7011",
     "https://fcupen.github.io/mixer/www/common.09d4a31b38f55bfb676e.js": "12aecdde93a04e48ecf3c609ee142e6707b418b7",
-    "https://fcupen.github.io/mixer/www/index.html": "5416e76934d4d0cd4f69729ba8d7a592d8bad3a9",
-    "https://fcupen.github.io/mixer/www/main.9984035658b136af20ec.js": "e77683fd9dc1209b459ebb5520d16c4abcb873ef",
+    "https://fcupen.github.io/mixer/www/index.html": "d8a840de28ae24ab18e936ae110f9d363529dcab",
+    "https://fcupen.github.io/mixer/www/main.bf4ea29e4a591f91a6f7.js": "2048c7b2a085b14ff56fb34acab83dbb5a4fb5d7",
     "https://fcupen.github.io/mixer/www/manifest.webmanifest": "da2061dba175bf2d881980e8596ff5343e2dd7b6",
     "https://fcupen.github.io/mixer/www/polyfills-core-js.ae4a399ca89f834f51b3.js": "16d81a0f0dff2b9454d02d2a49479370771ce2e2",
     "https://fcupen.github.io/mixer/www/polyfills-css-shim.f5c998e95d55e843af19.js": "e054ecef4123248b7a74c1ca45ba372865cfdbdc",
     "https://fcupen.github.io/mixer/www/polyfills-dom.d99140c3a0d698a7012e.js": "f5c8cea3e82647ea0dd7407712ac5987f2cdf1a3",
     "https://fcupen.github.io/mixer/www/polyfills.9e2072dc8497ffcd0a7b.js": "24bac8efcf594bad105fe492dfdd5a4e3e95e22b",
-    "https://fcupen.github.io/mixer/www/runtime.7812dc0c640538c4dc6e.js": "0470bcc3b74ddb97075e51a64bcd0b2e7e44669e",
-    "https://fcupen.github.io/mixer/www/styles.75141e607c2e7f377052.css": "2cee0ed5ad295e5e736469f5064bbe920fbbaeac"
+    "https://fcupen.github.io/mixer/www/runtime.f8855fbb32179fe5fd1d.js": "0553870ecfe5e5603231b13aebde77b1917d8147",
+    "https://fcupen.github.io/mixer/www/styles.39920b060bc0f5634aa0.css": "ae59e49860d87d764ddbbfc8539b0c9f21c92f08"
   },
   "navigationUrls": [
     {

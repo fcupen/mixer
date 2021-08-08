@@ -9,9 +9,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { EqComponent } from './components/eq/eq.component';
+import { JsonToArrayPipe } from './pipes/jsonToArray';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, EqComponent, JsonToArrayPipe],
   entryComponents: [],
   imports: [
     BrowserModule,

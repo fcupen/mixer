@@ -1,0 +1,50 @@
+<ion-header translucent="true">
+  <ion-toolbar>
+    <ion-title>Equalizer</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" [name]="'arrow-back-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="startTune()">
+        <ion-icon
+          slot="icon-only"
+          [name]="!isTune ? 'mic' : 'mic-off'"
+        ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen="true">
+  <!-- {{ {lower: (detune|async) > 0 ? 0 : (detune|async), upper:(detune|async) < 0 ? 0 : (detune|async)} | json }} -->
+  <ion-list>
+    <ion-item *ngIf="isTune">
+      <div class="w100">
+        <div class="w100 note">{{note | async}}</div>
+        <div class="w100">
+          <ion-range class="tune" dualKnobs="true" disabled="false" [min]="-100" [max]="100" [step]="1" [value]="{lower: (detune|async) < 0 ? 0 : (detune|async), upper:(detune|async) > 0 ? 0 : (detune|async)}">
+          </ion-range>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item *ngFor="let option of equalizerOpt | jsonToArray">
+      <ion-label class="time">
+        {{ option.key | titlecase }}
+      </ion-label>
+      <ion-range
+        (click)="update(option.key)"
+        (ionChange)="change($event)"
+        [min]="option.value?.min"
+        [max]="option.value?.max"
+        [step]="option.value?.step"
+        [value]="option.value?.value"
+      >
+        <ion-label slot="end" *ngIf="option.value?.pin">
+          {{ option.value?.prefix }}
+          {{ option.value?.value * option.value?.mult | number: "1.0-2" }}
+        </ion-label>
+      </ion-range>
+    </ion-item>
+  </ion-list>
+</ion-content>

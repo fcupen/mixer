@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { TimePipe } from '../pipes/time.pipe';
+import { JsonToArrayPipe } from '../pipes/jsonToArray';
 
 
 @NgModule({

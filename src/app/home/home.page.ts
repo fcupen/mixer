@@ -3,7 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertController, IonRouterOutlet, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { BehaviorSubject } from 'rxjs';
+import { EqComponent } from '../components/eq/eq.component';
 import { MixInterface } from '../interfaces/mix';
+import { EqualizerProvider } from '../providers/equalizer.provider';
 import { MixerProvider } from '../providers/mixer.provider';
 
 @Component({
@@ -24,13 +26,20 @@ export class HomePage implements OnInit {
   currentTime = 0;
   updateTime = true;
 
+  currentVolume = 0.5;
+
   showControls = false;
   duration = -1;
+
 
   showAdd = false;
 
   currentMix = new Audio();
+
+  equalizer;
+
   constructor(
+    private equalizerProvider: EqualizerProvider,
     private mixerProvider: MixerProvider,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
@@ -58,6 +67,12 @@ export class HomePage implements OnInit {
     this.currentTime$.subscribe((currentTime) => {
       if (this.updateTime) {
         this.currentTime = currentTime;
+      }
+    });
+    this.equalizerProvider.equalizerOpt.subscribe((equalizer) => {
+      console.log(equalizer);
+      if (equalizer.volume) {
+        this.currentVolume = equalizer.volume.value;
       }
     });
   }
@@ -105,15 +120,27 @@ export class HomePage implements OnInit {
   setDuration(duration) {
     this.duration = duration;
   }
-  playMix(index, currentTime = this.currentTime) {
+
+  async openEqualizer() {
+    const modal = await this.modalCtrl.create({
+      component: EqComponent
+    });
+    return await modal.present();
+  }
+
+
+  playMix(index, currentTime = this.currentTime, volume = this.currentVolume) {
     this.stopMix();
     if (index !== this.indexClick) {
       this.stopMix();
       this.prevIndex = index;
       this.indexClick = index;
       this.currentMix = new Audio(this.mixes[index].data);
-      this.currentMix.volume = 0.2;
+      this.currentMix.volume = volume;
       this.currentMix.currentTime = currentTime;
+
+      this.equalizerProvider.equalizerMix(this.currentMix);
+      this.equalizerProvider.amplify(10);
 
       this.currentMix.play();
       this.currentMix.onplaying = () => {
@@ -175,6 +202,11 @@ export class HomePage implements OnInit {
     this.currentMix.currentTime = this.currentTime;
     this.currentTime$.next(this.currentMix.currentTime);
     this.updateTime = true;
+  }
+
+  changeVolume(e) {
+    this.currentVolume = e.detail.value;
+    this.currentMix.volume = this.currentVolume;
   }
 
   async presentToast(message) {

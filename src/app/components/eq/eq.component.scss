@@ -1,0 +1,14 @@
+.note {
+  text-align: center;
+  font-size: xx-large;
+}
+.tune {
+  --bar-background-active: #71df71 !important;
+  --knob-border-radius: 50%;
+  --knob-background: var(--bar-background-active);
+  --knob-box-shadow: none;
+  --knob-size: 13px;
+  --bar-height: 4px;
+  --bar-border-radius: 50%;
+  --height: 54px;
+}

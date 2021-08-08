@@ -29,6 +29,9 @@
   display: flex;
   flex-wrap: wrap;
 }
+.no-wrap{
+  flex-wrap: nowrap;
+}
 .mix {
   flex-grow: 1;
   margin: 0.5rem;

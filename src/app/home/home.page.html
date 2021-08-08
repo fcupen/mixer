@@ -5,6 +5,9 @@
       <ion-button (click)="showAdd=!showAdd">
         <ion-icon slot="icon-only" [name]="showAdd?'close':'add'"></ion-icon>
       </ion-button>
+      <ion-button (click)="openEqualizer()"
+        ><ion-icon name="options-outline"></ion-icon
+      ></ion-button>
     </ion-buttons>
   </ion-toolbar>
   <ion-toolbar *ngIf="showAdd">
@@ -40,15 +43,18 @@
     >
       <div class="w100">
         <div class="w100 mix-information">
-          <span class="w100">{{mix.name}}</span>
+          <div class="flex no-wrap">
+            <span class="w100">{{mix.name}}</span>
+            <ion-icon
+              slot="start"
+              (click)="removeMix(i)"
+              name="trash"
+            ></ion-icon>
+          </div>
           <span class="play">
             <ion-icon name="musical-notes-outline"></ion-icon>
           </span>
         </div>
-        <ion-button expand="full" (click)="removeMix(i)">
-          Delete
-          <ion-icon slot="start" name="trash"></ion-icon>
-        </ion-button>
       </div>
     </div>
   </div>
